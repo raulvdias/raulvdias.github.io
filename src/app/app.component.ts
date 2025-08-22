@@ -1,4 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -9,17 +8,19 @@ import {
   PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { gsap } from 'gsap';
 import {
   TextPlugin,
   ScrollToPlugin,
   ScrollSmoother,
   ScrollTrigger,
+  MotionPathPlugin,
 } from 'gsap/all';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [MatTooltipModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -37,6 +38,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  rocket: any;
+  rocketTimeline: any;
+
   constructor(@Inject(PLATFORM_ID) public platformId: Object) {}
 
   ngOnInit(): void {
@@ -44,19 +48,16 @@ export class AppComponent implements OnInit, AfterViewInit {
       TextPlugin,
       ScrollToPlugin,
       ScrollSmoother,
-      ScrollTrigger
+      ScrollTrigger,
+      MotionPathPlugin
     );
   }
 
   ngAfterViewInit(): void {
-    ScrollSmoother.create({
-      wrapper: this.smoothWrapper.nativeElement,
-      content: this.smoothContent.nativeElement,
-      smooth: 4,
-      effects: true,
-    });
     this.textAnimations();
     this.nameMainAnimation();
+    this.aboutAnimation();
+    this.animateRockets();
   }
 
   textAnimations() {
@@ -69,13 +70,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   nameMainAnimation() {
     let animation = gsap.set('#name', {
       scale: 1.1,
+      y: -30,
       paused: true,
+      ease: 'power1.inOut',
     });
 
     let rotate = gsap.to('#name', {
-      rotationX: 25,
-      rotationY: 45,
-      y: -30,
       duration: 1,
       ease: 'power1.inOut',
       paused: true,
@@ -95,6 +95,59 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  aboutAnimation() {
+    let item = document.getElementById('sobre');
+    gsap.to(item, {
+      duration: 3,
+      opacity: 1,
+      scale: 1,
+      scrollTrigger: {
+        start: 'top 80%',
+        end: 'top 40%',
+        scrub: 1,
+      },
+    });
+  }
+
+  animateRockets() {
+    this.rocket = document.getElementById('rocket');
+
+    this.rocketTimeline = gsap.timeline();
+
+    this.rocketTimeline
+      .to(this.rocket, { x: 50, rotate: 60, duration: 1 })
+      .to(this.rocket, {
+        duration: 10,
+        x: window.screen.width - 70,
+        y: 120,
+        delay: 0,
+        rotate: 180,
+      })
+      .to(this.rocket, {
+        duration: 10,
+        x: window.screen.width / 4,
+        y: 550,
+        rotate: 260,
+      })
+      .to(this.rocket, { duration: 1, x: -100, y: 100 })
+      .to(this.rocket, {
+        duration: 10,
+        x: window.innerWidth - 100,
+        y: 100,
+        rotate: -160,
+        visibility: 'hidden',
+      })
+      .to(this.rocket, { duration: 10, x: -100, y: 450, visibility: 'visible' })
+      .to(this.rocket, { visibility: 'hidden' });
+
+    if (this.rocket != null) {
+      this.rocket.addEventListener('click', () => {
+        this.rocketTimeline.kill();
+        this.rocket.style.visibility = 'hidden';
+      });
+    }
+  }
+
   scrollToElement(elem: any): void {
     let item = document.getElementById(elem);
     if (item) {
@@ -104,5 +157,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         scrollTo: scroll,
       });
     }
+  }
+
+  resetRocket() {
+    this.rocketTimeline.restart();
+    this.rocket.style.visibility = 'visible';
   }
 }

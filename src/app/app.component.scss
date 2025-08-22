@@ -1,3 +1,13 @@
+header {
+  z-index: 100;
+}
+
+.background {
+  @apply bg-no-repeat bg-cover bg-[center_center] bg-fixed relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../public/7971.jpg);
+}
+
 header.scrolled {
   background-color: rgba(41, 40, 40, 0.98); /* New background color on scroll */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 1); /* Optional shadow */
@@ -21,4 +31,46 @@ a:hover {
   background: -webkit-linear-gradient(#db8008, #fcff59);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+section {
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#name {
+  transition: 1s;
+}
+
+.card-silver {
+  position: relative;
+  border-radius: 16px; // equivalente ao rounded-2xl
+  padding: 1rem;
+  color: #d1d5db; // gray-300
+  background: linear-gradient(
+    135deg,
+    #1a1a1a,
+    #000000,
+    #1a1a1a
+  ); // fundo interno
+
+  // borda prateada
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px; // grossura da borda
+    background: linear-gradient(135deg, #e5e5e5, #a3a3a3, #e5e5e5);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  // sombra prateada
+  box-shadow: 0 0 15px rgba(192, 192, 192, 0.6);
 }
