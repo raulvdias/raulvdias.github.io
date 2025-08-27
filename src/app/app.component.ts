@@ -17,7 +17,6 @@ import {
   ScrollTrigger,
   MotionPathPlugin,
 } from 'gsap/all';
-import { bounceInOnEnterAnimation } from 'angular-animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -39,10 +38,10 @@ emailjs.init('jbGYlqwLsSwYrioY5');
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations: [bounceInOnEnterAnimation({ duration: 500, delay: 200 })],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Raul V. Dias';
+  mobile: any;
   @ViewChild('smoothWrapper') smoothWrapper!: ElementRef;
   @ViewChild('smoothContent') smoothContent!: ElementRef;
   @HostListener('window:scroll', ['$event'])
@@ -53,6 +52,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     } else {
       header?.classList.remove('scrolled');
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.mobile = event.target.innerWidth < 768 ? true : false;
   }
 
   rocket: any;
@@ -83,6 +87,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.initHeaderMobile();
     if (isPlatformBrowser(this.platformId)) {
       this.textAnimations();
       this.nameMainAnimation();
@@ -178,7 +183,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         rotate: -160,
         visibility: 'hidden',
       })
-      .to(this.rocket, { duration: 10, x: -100, y: 450, visibility: 'visible' })
+      .to(this.rocket, {
+        duration: 10,
+        x: -100,
+        y: 450,
+        visibility: 'visible',
+      })
       .to(this.rocket, { visibility: 'hidden' });
 
     if (this.rocket != null) {
@@ -191,10 +201,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   scrollToElement(elem: any): void {
     let item = document.getElementById(elem);
+
     if (item) {
       let scroll = item.offsetTop < 500 ? 0 : item.offsetTop - 200;
       if (elem == 'timeline') {
         scroll = item.offsetTop - 500;
+      }
+
+      if (window.innerWidth < 768) {
+        scroll = scroll = item.offsetTop < 500 ? 0 : item.offsetTop - 450;
+        if (elem == 'skills') {
+          scroll = item.offsetTop - 400;
+        } else if (elem == 'timeline') {
+          scroll = item.offsetTop - 800;
+        }
       }
       gsap.to(window, {
         duration: 2.5,
@@ -257,6 +277,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       height: 'auto',
       data: data,
     });
+  }
+
+  initHeaderMobile() {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton) {
+      menuButton.addEventListener('click', () => {
+        if (mobileMenu) {
+          mobileMenu.classList.toggle('hidden');
+        }
+      });
+    }
   }
 
   sendEmail() {

@@ -1,20 +1,22 @@
 <div
   #smoothWrapper
-  class="background bg-white text-black dark:bg-black text-white"
+  class="mx-auto background bg-white text-black dark:bg-black text-white"
 >
-  <header class="w-full bg-black top-0 sticky py-5">
-    <div class="max-w-6xl mx-auto text-xl tracking-wide montserrat-text">
-      <div class="flex justify-between">
+  <header class="w-full bg-black top-0 sticky py-5 px-5 z-50 overflow-x-hidden">
+    <div
+      class="max-w-full mx-auto text-xl tracking-wide montserrat-text px-4 sm:px-6"
+    >
+      <div class="flex justify-between items-center flex-wrap">
         <div
-          class="cursor-pointer flex flex-row gap-5 hover:scale-110 transition"
+          class="cursor-pointer flex flex-row gap-2 sm:gap-5 items-center hover:scale-110 transition flex-shrink-0"
           (click)="scrollToElement('name')"
         >
           <div class="text-orange-500">{{ "{" }}</div>
-          <p>Raul V. Dias</p>
+          <p class="text-sm sm:text-base md:text-lg truncate">Raul V. Dias</p>
           <div class="text-orange-500">&#125;</div>
         </div>
 
-        <div class="flex flex-row gap-8 place">
+        <nav class="hidden md:flex flex-row gap-6 items-center flex-shrink-0">
           <a
             class="nav cursor-pointer hover:scale-110 transition"
             (click)="scrollToElement('about')"
@@ -40,24 +42,82 @@
             (click)="scrollToElement('contacts')"
             >Contato</a
           >
-          <div class="place-items-center">
-            <button
-              [matTooltip]="'Reiniciar foguete!'"
-              (click)="resetRocket()"
-              class="border-1 border-gray-500 p-2 rounded-md cursor-pointer hover:border-gray-200"
+
+          <button
+            [matTooltip]="'Reiniciar foguete!'"
+            (click)="resetRocket()"
+            class="border border-gray-500 p-2 rounded-md cursor-pointer hover:border-gray-200"
+          >
+            <img
+              src="rocket.svg"
+              alt="Foguete!"
+              class="w-5 h-4 rotate-[-45deg] object-contain"
+            />
+          </button>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              <img
-                src="rocket.svg"
-                alt="Foguete!"
-                class="w-5 h-4 rotate-[-45deg]"
-              />
-            </button>
-          </div>
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden flex-col mt-2 space-y-2 md:hidden w-full"
+      >
+        <a
+          class="nav block cursor-pointer hover:scale-105 transition truncate"
+          (click)="scrollToElement('about')"
+          >Sobre</a
+        >
+        <a
+          class="nav block cursor-pointer hover:scale-105 transition truncate"
+          (click)="scrollToElement('skills')"
+          >Skills</a
+        >
+        <a
+          class="nav block cursor-pointer hover:scale-105 transition truncate"
+          (click)="scrollToElement('timeline')"
+          >Timeline</a
+        >
+        <a
+          class="nav block cursor-pointer hover:scale-105 transition truncate"
+          (click)="scrollToElement('projects')"
+          >Projetos</a
+        >
+        <a
+          class="nav block cursor-pointer hover:scale-105 transition truncate"
+          (click)="scrollToElement('contacts')"
+          >Contato</a
+        >
+        <button
+          [matTooltip]="'Reiniciar foguete!'"
+          (click)="resetRocket()"
+          class="border border-gray-500 p-2 rounded-md text-left max-w-fit hover:border-gray-200 w-full"
+        >
+          <img
+            src="rocket.svg"
+            alt="Foguete!"
+            class="w-5 h-4 rotate-[-45deg]"
+          />
+        </button>
       </div>
     </div>
   </header>
-  <div class="w-full">
+
+  <div class="hidden md:block w-full">
     <img
       id="rocket"
       src="rocket.svg"
@@ -89,8 +149,9 @@
 
           <div class="flex flex-row gap-4 sm:gap-6 mt-8 sm:mt-10">
             <svg
+              (click)="redirect('https://www.linkedin.com/in/raulvsdias/')"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-8 h-8 sm:w-9 sm:h-9"
+              class="cursor-pointer h-8 sm:w-9 sm:h-9"
               fill="currentColor"
               viewBox="0 0 15 15"
             >
@@ -100,10 +161,11 @@
             </svg>
 
             <svg
+              (click)="redirect('https://github.com/raulvdias')"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-8 h-8 sm:w-9 sm:h-9"
+              class="cursor-pointer h-8 sm:w-9 sm:h-9"
               fill="currentColor"
-              viewBox="0 0 15 15"
+              viewBox="0 0 16 16"
             >
               <path
                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
@@ -604,7 +666,9 @@
       </section>
 
       <section id="projects" class="flex flex-col mt-130 mb-90 px-8">
-        <h2 class="text-center text-4xl md:text-6xl skills font-bold mb-5">
+        <h2
+          class="text-center text-4xl md:text-6xl skills font-bold mb-5 h-full"
+        >
           Projetos
         </h2>
 
