@@ -16,13 +16,30 @@
 
         <div class="flex flex-row gap-8 place">
           <a
-            class="cursor-pointer hover:scale-110 transition"
-            (click)="scrollToElement('sobre')"
+            class="nav cursor-pointer hover:scale-110 transition"
+            (click)="scrollToElement('about')"
             >Sobre</a
           >
-          <a class="cursor-pointer hover:scale-110 transition">Skills</a>
-          <a class="cursor-pointer hover:scale-110 transition">Projetos</a>
-          <a class="cursor-pointer hover:scale-110 transition">Contato</a>
+          <a
+            class="nav cursor-pointer hover:scale-110 transition"
+            (click)="scrollToElement('skills')"
+            >Skills</a
+          >
+          <a
+            class="nav cursor-pointer hover:scale-110 transition"
+            (click)="scrollToElement('timeline')"
+            >Timeline</a
+          >
+          <a
+            class="nav cursor-pointer hover:scale-110 transition"
+            (click)="scrollToElement('projects')"
+            >Projetos</a
+          >
+          <a
+            class="nav cursor-pointer hover:scale-110 transition"
+            (click)="scrollToElement('contacts')"
+            >Contato</a
+          >
           <div class="place-items-center">
             <button
               [matTooltip]="'Reiniciar foguete!'"
@@ -56,8 +73,8 @@
         Olá, eu sou
       </p>
 
-      <section class="mb-35 flex flex-col">
-        <div id="name" class="flex flex-col items-center">
+      <section class="mb-[25%] flex flex-col">
+        <div id="name" class="flex flex-col items-center pb-20">
           <span class="text-8xl font-bold montserrat-text name"
             >Raul Victor Dias</span
           >
@@ -89,27 +106,46 @@
             </svg>
           </div>
         </div>
+
+        <div class="flex justify-center pt-[5%]">
+          <svg
+            class="cursor-pointer"
+            (click)="scrollToElement('about')"
+            [matTooltip]="'Ir para seção Sobre'"
+            id="scroll-bottom"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 10l8 8 8-8" />
+            <path d="M12 18l8 8 8-8" />
+            <path d="M12 26l8 8 8-8" />
+          </svg>
+        </div>
       </section>
 
-      <section id="sobre" class="flex flex-col">
+      <section id="about" class="mb-[25%] flex flex-col">
         <h2 class="text-center text-6xl name font-bold">Sobre mim</h2>
         <div class="py-16 px-6 text-gray-200">
           <div class="max-w-5xl mx-auto grid md:grid-flow-col grid-row-3 gap-8">
             <div
               class="row-span-2 rounded-2xl p-[1px] bg-gradient-to-br from-gray-300 via-gray-500 to-gray-300 shadow-[0_0_15px_rgba(192,192,192,0.6)] h-full hover:scale-105 hover:transition duration-500 ease-in"
             >
-              <div
-                class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl h-full flex flex-col"
-              >
+              <div class="bg-black rounded-2xl h-full flex flex-col">
                 <h2 class="text-2xl font-bold text-white mb-4 text-center pt-8">
                   Raul Victor Dias
                 </h2>
-                <p class="text-gray-300 leading-relaxed text-center">
+                <p class="text-gray-500 leading-relaxed text-center font-bold">
                   Desenvolvedor Web / Engenheiro de Software
                 </p>
                 <img
-                  class="mx-auto grayscale-50 p-2 rounded-md"
-                  src="img-user-r-Photoroom.png"
+                  class="mx-auto grayscale-60 p-2 rounded-2xl h-full"
+                  src="user-img.png"
                   alt="Foto Raul Victor Dias"
                 />
               </div>
@@ -160,7 +196,665 @@
             </div>
           </div>
         </div>
+
+        <div class="flex justify-center">
+          <svg
+            class="cursor-pointer"
+            (click)="scrollToElement('skills')"
+            [matTooltip]="'Ir para seção de Skills'"
+            id="scroll-bottom"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 10l8 8 8-8" />
+            <path d="M12 18l8 8 8-8" />
+            <path d="M12 26l8 8 8-8" />
+          </svg>
+        </div>
+      </section>
+
+      <section id="skills" class="flex flex-col mb-[25%] my-10">
+        <h2 class="text-center text-6xl skills font-bold mb-5">Skills</h2>
+        <div class="max-w-6xl mx-auto text-center mb-12">
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Um resumo das minhas habilidades técnicas, interpessoais e objetivos
+            profissionais.
+          </p>
+        </div>
+
+        <div class="py-16 grid md:grid-cols-3 gap-6">
+          <div
+            class="rounded-2xl p-[1px] bg-gradient-to-br from-gray-300 via-gray-500 to-gray-300 shadow-[0_0_15px_rgba(192,192,192,0.6)] h-full hover:scale-105 hover:transition duration-500 ease-in"
+          >
+            <div
+              class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl p-8 h-full flex flex-col"
+            >
+              <h2 class="text-xl font-bold mb-4">⚙️ Habilidades Técnicas</h2>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                  </svg>
+                  JavaScript / TypeScript / Python
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                  </svg>
+                  Angular / React / Node.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <ellipse cx="12" cy="5" rx="9" ry="3" />
+                    <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+                    <path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3" />
+                  </svg>
+                  MySQL / PostgreSQL / Firebase
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                    />
+                  </svg>
+                  Git / Docker / APIs REST
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="rounded-2xl p-[1px] bg-gradient-to-br from-gray-300 via-gray-500 to-gray-300 shadow-[0_0_15px_rgba(192,192,192,0.6)] h-full hover:scale-105 hover:transition duration-500 ease-in"
+          >
+            <div
+              class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl p-8 h-full flex flex-col"
+            >
+              <h2 class="text-xl font-bold mb-4">🤝 Soft Skills</h2>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                    <path d="M8 12h.01M12 12h.01M16 12h.01" />
+                  </svg>
+                  Comunicação clara
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M7 21v-2a4 4 0 0 1 3-3.87" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  Trabalho em equipe
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M9 18h6M10 22h4M2 9a10 10 0 0 1 20 0c0 5-3 7-5 9H7c-2-2-5-4-5-9z"
+                    />
+                  </svg>
+                  Resolução de problemas
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  Gestão de tempo
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="rounded-2xl p-[1px] bg-gradient-to-br from-gray-300 via-gray-500 to-gray-300 shadow-[0_0_15px_rgba(192,192,192,0.6)] h-full hover:scale-105 hover:transition duration-500 ease-in"
+          >
+            <div
+              class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl p-8 h-full flex flex-col"
+            >
+              <h2 class="text-xl font-bold mb-4">🚀 Objetivos</h2>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"
+                    />
+                  </svg>
+                  Criar soluções escaláveis em Cloud
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M15 6a3 3 0 0 0-6 0v12a3 3 0 0 0 6 0V6z" />
+                  </svg>
+                  Explorar IA e automação
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M12 4H6a2 2 0 0 0-2 2v14l8-4 8 4V6a2 2 0 0 0-2-2h-6z"
+                    />
+                  </svg>
+                  Aprender novas tecnologias
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      d="M4 13a8 8 0 0 1 8-8h.5L15 3l3 3-2 2.5V12a8 8 0 0 1-8 8H4v-7z"
+                    />
+                  </svg>
+                  Colaborar em projetos de impacto
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <svg
+            class="cursor-pointer"
+            (click)="scrollToElement('timeline')"
+            [matTooltip]="'Ir para Timeline'"
+            id="scroll-bottom"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 10l8 8 8-8" />
+            <path d="M12 18l8 8 8-8" />
+            <path d="M12 26l8 8 8-8" />
+          </svg>
+        </div>
+      </section>
+
+      <section id="timeline" class="flex flex-col mt-[25%] mb-[25%]">
+        <h2 class="text-center text-6xl name font-bold mb-5">Minha Jornada</h2>
+        <div class="max-w-6xl mx-auto text-center mb-12">
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Uma linha do tempo que mostra minha evolução profissional, desde as
+            primeiras experiências até os projetos mais recentes, destacando os
+            aprendizados e conquistas ao longo da carreira.
+          </p>
+        </div>
+        <div class="max-w-6xl mx-auto">
+          <div class="relative">
+            <!-- Linha central -->
+            <div
+              class="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-700"
+            ></div>
+
+            <!-- Siacon -->
+            <div class="mb-12 flex justify-start relative">
+              <div class="w-full md:w-1/2 pr-8 text-right">
+                <div
+                  class="bg-white text-black p-6 rounded-2xl shadow-lg border-2 border-blue-800 hover:scale-105 transition"
+                >
+                  <h3 class="text-xl font-semibold">2019 — Siacon</h3>
+                  <p class="text-black mt-2">
+                    <strong>Cargo:</strong> Analista de Infraestrutura<br />
+                    <strong>Atividades:</strong> manutenção de inventário,
+                    diagnóstico e resolução de problemas de infraestrutura.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+              ></div>
+            </div>
+
+            <!-- Secretaria da Economia -->
+            <div class="mb-12 flex justify-end relative">
+              <div class="w-full md:w-1/2 pl-8 text-left">
+                <div
+                  class="bg-white text-black p-6 rounded-2xl shadow-lg border-2 border-blue-800 hover:scale-105 transition"
+                >
+                  <h3 class="text-xl font-semibold">
+                    2020 - 2022 — Secretaria da Economia do Estado de Goiás
+                  </h3>
+                  <p class="text-black mt-2">
+                    <strong>Cargo:</strong> Analista de Business Intelligence<br />
+                    <strong>Atividades:</strong> modelagem de dados, criação de
+                    universos (Business Objects), relatórios de auditoria
+                    fiscal, implantação e pós-implantação de soluções BI.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+              ></div>
+            </div>
+
+            <!-- Residência Fábrica de Software -->
+            <div class="mb-12 flex justify-start relative">
+              <div class="w-full md:w-1/2 pr-8 text-right">
+                <div
+                  class="bg-white text-black p-6 rounded-2xl shadow-lg border-2 border-blue-800 hover:scale-105 transition"
+                >
+                  <h3 class="text-xl font-semibold">
+                    2022 — Residência Fábrica de Software (UFG)
+                  </h3>
+                  <p class="text-black mt-2">
+                    <strong>Cargo:</strong> Desenvolvedor de Software<br />
+                    <strong>Atividades:</strong> desenvolvimento full stack
+                    (Angular, Node.js), testes unitários e integração
+                    (Karma/Jasmine), participação no projeto
+                    <a
+                      href="https://tceduca.irbcontas.org.br"
+                      target="_blank"
+                      class="text-blue-400 hover:underline"
+                      >TCEduca</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+              ></div>
+            </div>
+
+            <!-- Structor / Fox Grãos -->
+            <div class="mb-12 flex justify-end relative">
+              <div class="w-full md:w-1/2 pl-8 text-left">
+                <div
+                  class="bg-white text-black p-6 rounded-2xl shadow-lg border-2 border-blue-800 hover:scale-105 transition"
+                >
+                  <h3 class="text-xl font-semibold">
+                    2022 - 2024 — Structor / Fox Grãos
+                  </h3>
+                  <p class="text-black mt-2">
+                    <strong>Cargo:</strong> Desenvolvedor de Software / Analista
+                    de Sistemas<br />
+                    <strong>Atividades:</strong> desenvolvimento web full stack
+                    (Angular 15+, Node.js, Express, Tailwind, Firebase), testes
+                    unitários e de integração, manutenção e evolução de sistemas
+                    corporativos.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+              ></div>
+            </div>
+
+            <div class="mb-12 flex justify-start relative">
+              <div class="w-full md:w-1/2 pr-8 text-right">
+                <div
+                  class="bg-white text-black p-6 rounded-2xl shadow-lg border-2 border-blue-800 hover:scale-105 transition"
+                >
+                  <h3 class="text-xl font-semibold">2025 — Freelancer</h3>
+                  <p class="text-black mt-2">
+                    <strong>Cargo:</strong> Desenvolvedor Full Stack
+                    Freelancer<br />
+                    <strong>Tecnologias:</strong> MEAN Stack (MongoDB, Express,
+                    Angular, Node.js)<br />
+                    <strong>Atividades:</strong> desenvolvimento de soluções sob
+                    demanda para clientes, integração de sistemas e criação de
+                    aplicações escaláveis.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <svg
+            class="cursor-pointer"
+            (click)="scrollToElement('projects')"
+            [matTooltip]="'Ir para seção de Projetos'"
+            id="scroll-bottom"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 10l8 8 8-8" />
+            <path d="M12 18l8 8 8-8" />
+            <path d="M12 26l8 8 8-8" />
+          </svg>
+        </div>
+      </section>
+
+      <section id="projects" class="flex flex-col mb-[25%] mt-[25%]">
+        <h2 class="text-center text-6xl skills font-bold mb-5">Projetos</h2>
+        <div class="max-w-6xl mx-auto text-center mb-12">
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Aqui estão alguns exemplos de projetos que desenvolvi, mostrando
+            minhas habilidades em prática.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div
+            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col"
+          >
+            <img
+              src="var-ambiental.jpg"
+              alt="Projeto VAR Ambiental"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6 flex flex-col flex-1">
+              <h2 class="text-2xl font-bold mb-2">
+                VAR Ambiental - Plataforma Web / Mobile
+              </h2>
+              <p class="text-gray-300 flex-1">
+                Uma plataforma completa desenvolvida em Angular e Node.js com
+                integração a banco de dados (MongoDB), focada em oferecer
+                experiência intuitiva e escalável. No projeto foi utilizado
+                firebase (hosting e autenticação), tailwind, integrações com
+                API's diversas como ChatGPT, entre outros.
+              </p>
+              <div class="mt-4 flex gap-3">
+                <a
+                  (click)="redirect('https://amb-cs.web.app')"
+                  target="_blank"
+                  class="cursor-pointer bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm transition"
+                  >Ver aplicativo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col"
+          >
+            <img
+              src="olemix-logo.jpg"
+              alt="Projeto Olemix Audio Visual"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6 flex flex-col flex-1">
+              <h2 class="text-2xl font-bold mb-2">
+                Olemix Audio Design - Site institucional
+              </h2>
+              <p class="text-gray-300 flex-1">
+                Site institucional simples criado em Angular com integração ao
+                Firebase (hosting), tailwind, e bibliotecas de animação para
+                modernizar a interface.
+              </p>
+              <div class="mt-4 flex gap-3">
+                <a
+                  (click)="redirect('https://olemixlp-st.web.app')"
+                  target="_blank"
+                  class="cursor-pointer bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm transition"
+                  >Ver site</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-15">
+          <svg
+            class="cursor-pointer"
+            (click)="scrollToElement('contacts')"
+            [matTooltip]="'Ir para seção de Contatos'"
+            id="scroll-bottom"
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 10l8 8 8-8" />
+            <path d="M12 18l8 8 8-8" />
+            <path d="M12 26l8 8 8-8" />
+          </svg>
+        </div>
+      </section>
+
+      <section id="contacts" class="flex flex-col">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <h1 class="text-4xl font-bold mb-4">Entre em Contato</h1>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Preencha o formulário abaixo e entrarei em contato com você o quanto
+            antes.
+          </p>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Ou então entre em contato pelo
+            <a
+              href="https://www.linkedin.com/in/raulvsdias/"
+              target="_blank"
+              class="underline text-blue-200"
+            >
+              Linkedin!
+            </a>
+          </p>
+        </div>
+
+        <div class="w-full grid grid-cols-2 gap-1 place-items-center">
+          <div
+            class="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition"
+          >
+            <div [formGroup]="form" class="space-y-2">
+              <p class="text-center text-2xl font-bold">Enviar e-mail</p>
+              <mat-form-field class="w-full">
+                <mat-label class="w-full text-sm font-medium">Nome</mat-label>
+                <input
+                  matInput
+                  [formControlName]="'name'"
+                  placeholder="Seu nome"
+                  class="!text-black"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="w-full">
+                <mat-label class="w-full text-sm font-medium">E-mail</mat-label>
+                <input
+                  matInput
+                  [formControlName]="'email'"
+                  placeholder="seuemail@email.com"
+                  class="!text-black"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="w-full">
+                <mat-label class="text-sm font-medium"
+                  >Nome do projeto / Assunto</mat-label
+                >
+                <input
+                  matInput
+                  [formControlName]="'subject'"
+                  class="!text-black"
+                />
+              </mat-form-field>
+
+              <div class="w-full">
+                <mat-label class="block text-sm font-medium mb-2"
+                  >Mensagem</mat-label
+                >
+                <textarea
+                  [formControlName]="'message'"
+                  rows="5"
+                  class="w-full p-2 rounded-md text-black"
+                  placeholder="Escreva sua mensagem aqui..."
+                >
+                </textarea>
+              </div>
+
+              <div class="text-center">
+                <button
+                  mat-raised-button
+                  class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold hover:opacity-90 transition"
+                >
+                  Enviar Mensagem
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>Inserir outra formas de contatos</div>
+        </div>
       </section>
     </div>
   </main>
+
+  <footer class="bg-black text-white py-14 mt-16">
+    <div
+      class="max-w-6xl mx-auto px-6 place-items-center grid md:grid-cols-3 gap-12"
+    >
+      <!-- Coluna 1: Nome + Resumo -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Raul V. Dias</h2>
+        <p class="text-gray-400 leading-relaxed">
+          Desenvolvedor focado em criar soluções digitais modernas, escaláveis e
+          de alta performance. Experiência em web, mobile e manutenção de
+          sistemas.
+        </p>
+      </div>
+
+      <!-- Coluna 2: Navegação -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Navegação</h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              (click)="scrollToElement('about')"
+              class="nav cursor-pointer text-gray-300"
+              >Sobre mim</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="scrollToElement('skills')"
+              class="nav cursor-pointer text-gray-300"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="scrollToElement('timeline')"
+              class="nav cursor-pointer text-gray-300"
+              >Timeline</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="scrollToElement('projects')"
+              class="nav cursor-pointer text-gray-300"
+              >Projetos</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="scrollToElement('contacts')"
+              class="nav cursor-pointer text-gray-300"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Serviços -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Serviços</h3>
+        <ul class="space-y-2">
+          <li class="text-gray-300">Desenvolvimento Web</li>
+          <li class="text-gray-300">Desenvolvimento Mobile</li>
+          <li class="text-gray-300">Manutenção de App Angular</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-700 my-8"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-gray-500 text-sm">
+      © 2025 Raul V Dias. Todos os direitos reservados.
+    </div>
+  </footer>
 </div>

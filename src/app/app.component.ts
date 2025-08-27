@@ -17,12 +17,22 @@ import {
   ScrollTrigger,
   MotionPathPlugin,
 } from 'gsap/all';
+import { bounceInOnEnterAnimation } from 'angular-animations';
+import { MatButtonModule } from '@angular/material/button';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-root',
-  imports: [MatTooltipModule],
+  imports: [
+    MatTooltipModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  animations: [bounceInOnEnterAnimation({ duration: 500, delay: 200 })],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Raul V. Dias';
@@ -40,8 +50,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   rocket: any;
   rocketTimeline: any;
+  form: any;
 
-  constructor(@Inject(PLATFORM_ID) public platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) public platformId: Object,
+    private _formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     gsap.registerPlugin(
@@ -51,6 +65,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       ScrollTrigger,
       MotionPathPlugin
     );
+
+    this.form = this._formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
   }
 
   ngAfterViewInit(): void {
@@ -58,6 +79,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.nameMainAnimation();
     this.aboutAnimation();
     this.animateRockets();
+    this.skillsAnimations();
+    this.scrollBottomAnimations();
   }
 
   textAnimations() {
@@ -96,17 +119,25 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   aboutAnimation() {
-    let item = document.getElementById('sobre');
-    gsap.to(item, {
-      duration: 3,
-      opacity: 1,
-      scale: 1,
-      scrollTrigger: {
-        start: 'top 80%',
-        end: 'top 40%',
-        scrub: 1,
+    let item = document.getElementById('about');
+    gsap.fromTo(
+      item,
+      {
+        xPercent: -50,
+        opacity: 0,
       },
-    });
+      {
+        duration: 2,
+        xPercent: 0,
+        opacity: 1,
+        ease: 'bounce.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top center',
+          end: 'bottom 50%',
+        },
+      }
+    );
   }
 
   animateRockets() {
@@ -151,7 +182,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   scrollToElement(elem: any): void {
     let item = document.getElementById(elem);
     if (item) {
-      let scroll = item.offsetTop < 500 ? 0 : item.offsetTop;
+      let scroll = item.offsetTop < 500 ? 0 : item.offsetTop - 200;
+      if (elem == 'timeline') {
+        scroll = item.offsetTop - 500;
+      }
       gsap.to(window, {
         duration: 2.5,
         scrollTo: scroll,
@@ -162,5 +196,48 @@ export class AppComponent implements OnInit, AfterViewInit {
   resetRocket() {
     this.rocketTimeline.restart();
     this.rocket.style.visibility = 'visible';
+  }
+
+  skillsAnimations() {
+    const element = document.getElementById('skills');
+    gsap.fromTo(
+      element,
+      {
+        xPercent: -50,
+        opacity: 0,
+      },
+      {
+        duration: 0.5,
+        xPercent: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: element,
+          start: 'top center',
+          end: 'bottom 50%',
+        },
+      }
+    );
+  }
+
+  scrollBottomAnimations() {
+    const element = document.querySelectorAll('#scroll-bottom');
+
+    gsap.fromTo(
+      element,
+      {
+        opacity: 0,
+      },
+      {
+        duration: 0.8,
+        opacity: 1,
+        repeat: -1,
+        yoyo: true,
+      }
+    );
+  }
+
+  redirect(url: string) {
+    window.open(url, '_blank');
   }
 }

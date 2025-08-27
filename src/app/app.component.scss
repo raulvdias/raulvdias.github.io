@@ -21,7 +21,7 @@ header.scrolled {
   font-style: normal;
 }
 
-a:hover {
+a.nav:hover {
   background: -webkit-linear-gradient(#ffe364, #ffe08b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -29,6 +29,12 @@ a:hover {
 
 .name {
   background: -webkit-linear-gradient(#db8008, #fcff59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills {
+  background: -webkit-linear-gradient(#e9003a, #ff2679);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -41,6 +47,10 @@ section {
 }
 
 #name {
+  transition: 1s;
+}
+
+#skills {
   transition: 1s;
 }
 
@@ -73,4 +83,8 @@ section {
 
   // sombra prateada
   box-shadow: 0 0 15px rgba(192, 192, 192, 0.6);
+}
+
+textarea {
+  background-color: #d1d5db;
 }
