@@ -2,7 +2,7 @@
   #smoothWrapper
   class="background bg-white text-black dark:bg-black text-white"
 >
-  <header class="bg-black top-0 sticky py-5">
+  <header class="w-full bg-black top-0 sticky py-5">
     <div class="max-w-6xl mx-auto text-xl tracking-wide montserrat-text">
       <div class="flex justify-between">
         <div
@@ -65,27 +65,32 @@
       class="w-10 cursor-pointer"
     />
   </div>
-  <main #smoothContent class="flex items-center justify-center pb-25">
-    <div class="flex flex-col justify-center">
+  <main
+    #smoothContent
+    class="flex items-center justify-center pb-[50%] md:pb-25"
+  >
+    <div class="flex flex-col">
       <p
         class="text-center mt-25 text-lg rounded-full card-silver mx-auto font-bold"
       >
         Olá, eu sou
       </p>
 
-      <section class="mb-[25%] flex flex-col">
+      <section class="mb-60 flex flex-col px-4 sm:px-6 md:px-8">
         <div id="name" class="flex flex-col items-center pb-20">
-          <span class="text-8xl font-bold montserrat-text name"
-            >Raul Victor Dias</span
+          <span
+            class="text-5xl sm:text-6xl md:text-8xl font-bold montserrat-text name text-center"
           >
-          <span class="pt-3 text-4xl"
-            >Engenheiro de Software | Desenvolvedor Web</span
-          >
-          <div class="flex flex-row gap-3 mt-10">
+            Raul Victor Dias
+          </span>
+          <span class="pt-3 text-xl sm:text-2xl md:text-4xl text-center">
+            Engenheiro de Software | Desenvolvedor Web
+          </span>
+
+          <div class="flex flex-row gap-4 sm:gap-6 mt-8 sm:mt-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="30"
+              class="w-8 h-8 sm:w-9 sm:h-9"
               fill="currentColor"
               viewBox="0 0 15 15"
             >
@@ -93,10 +98,10 @@
                 d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
               />
             </svg>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="30"
+              class="w-8 h-8 sm:w-9 sm:h-9"
               fill="currentColor"
               viewBox="0 0 15 15"
             >
@@ -107,15 +112,13 @@
           </div>
         </div>
 
-        <div class="flex justify-center pt-[5%]">
+        <div class="flex justify-center pt-10 sm:pt-12 md:pt-[5%]">
           <svg
-            class="cursor-pointer"
+            class="cursor-pointer w-10 h-10 sm:w-12 sm:h-12"
             (click)="scrollToElement('about')"
             [matTooltip]="'Ir para seção Sobre'"
             id="scroll-bottom"
             xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
             fill="none"
             stroke="white"
             stroke-width="2"
@@ -129,7 +132,7 @@
         </div>
       </section>
 
-      <section id="about" class="mb-[25%] flex flex-col">
+      <section id="about" class="flex flex-col mt-90 mb-130 px-8">
         <h2 class="text-center text-6xl name font-bold">Sobre mim</h2>
         <div class="py-16 px-6 text-gray-200">
           <div class="max-w-5xl mx-auto grid md:grid-flow-col grid-row-3 gap-8">
@@ -219,7 +222,7 @@
         </div>
       </section>
 
-      <section id="skills" class="flex flex-col mb-[25%] my-10">
+      <section id="skills" class="flex flex-col mt-90 mb-130 px-8">
         <h2 class="text-center text-6xl skills font-bold mb-5">Skills</h2>
         <div class="max-w-6xl mx-auto text-center mb-12">
           <p class="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -450,7 +453,7 @@
         </div>
       </section>
 
-      <section id="timeline" class="flex flex-col mt-[25%] mb-[25%]">
+      <section id="timeline" class="flex flex-col mt-160 mb-160 px-8">
         <h2 class="text-center text-6xl name font-bold mb-5">Minha Jornada</h2>
         <div class="max-w-6xl mx-auto text-center mb-12">
           <p class="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -479,7 +482,7 @@
                 </div>
               </div>
               <div
-                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+                class="absolute md:left-1/2 left-4 md:-translate-x-1/2 top-6 bg-blue-500 w-4 h-4 rounded-full"
               ></div>
             </div>
 
@@ -500,7 +503,7 @@
                 </div>
               </div>
               <div
-                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+                class="absolute md:left-1/2 left-auto right-4 md:-translate-x-1/2 top-6 bg-blue-500 w-4 h-4 rounded-full"
               ></div>
             </div>
 
@@ -527,7 +530,7 @@
                 </div>
               </div>
               <div
-                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+                class="absolute md:left-1/2 left-4 md:-translate-x-1/2 top-6 bg-blue-500 w-4 h-4 rounded-full"
               ></div>
             </div>
 
@@ -550,7 +553,7 @@
                 </div>
               </div>
               <div
-                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+                class="absolute md:left-1/2 left-auto right-4 md:-translate-x-1/2 top-6 bg-blue-500 w-4 h-4 rounded-full"
               ></div>
             </div>
 
@@ -572,7 +575,7 @@
                 </div>
               </div>
               <div
-                class="absolute left-1/2 transform -translate-x-1/2 bg-blue-500 w-4 h-4 rounded-full top-6"
+                class="absolute md:left-1/2 left-4 md:-translate-x-1/2 top-6 bg-blue-500 w-4 h-4 rounded-full"
               ></div>
             </div>
           </div>
@@ -600,18 +603,21 @@
         </div>
       </section>
 
-      <section id="projects" class="flex flex-col mb-[25%] mt-[25%]">
-        <h2 class="text-center text-6xl skills font-bold mb-5">Projetos</h2>
+      <section id="projects" class="flex flex-col mt-130 mb-90 px-8">
+        <h2 class="text-center text-4xl md:text-6xl skills font-bold mb-5">
+          Projetos
+        </h2>
+
         <div class="max-w-6xl mx-auto text-center mb-12">
-          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
             Aqui estão alguns exemplos de projetos que desenvolvi, mostrando
             minhas habilidades em prática.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           <div
-            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col"
+            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col min-h-[400px]"
           >
             <img
               src="var-ambiental.jpg"
@@ -619,10 +625,10 @@
               class="w-full h-48 object-cover"
             />
             <div class="p-6 flex flex-col flex-1">
-              <h2 class="text-2xl font-bold mb-2">
+              <h2 class="text-xl md:text-2xl font-bold mb-2">
                 VAR Ambiental - Plataforma Web / Mobile
               </h2>
-              <p class="text-gray-300 flex-1">
+              <p class="text-gray-300 flex-1 text-sm md:text-base">
                 Uma plataforma completa desenvolvida em Angular e Node.js com
                 integração a banco de dados (MongoDB), focada em oferecer
                 experiência intuitiva e escalável. No projeto foi utilizado
@@ -641,7 +647,7 @@
           </div>
 
           <div
-            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col"
+            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col min-h-[400px]"
           >
             <img
               src="olemix-logo.jpg"
@@ -649,10 +655,10 @@
               class="w-full h-48 object-cover"
             />
             <div class="p-6 flex flex-col flex-1">
-              <h2 class="text-2xl font-bold mb-2">
+              <h2 class="text-xl md:text-2xl font-bold mb-2">
                 Olemix Audio Design - Site institucional
               </h2>
-              <p class="text-gray-300 flex-1">
+              <p class="text-gray-300 flex-1 text-sm md:text-base">
                 Site institucional simples criado em Angular com integração ao
                 Firebase (hosting), tailwind, e bibliotecas de animação para
                 modernizar a interface.
@@ -669,7 +675,7 @@
           </div>
         </div>
 
-        <div class="flex justify-center mt-15">
+        <div class="flex justify-center mt-10 md:mt-15">
           <svg
             class="cursor-pointer"
             (click)="scrollToElement('contacts')"
@@ -691,31 +697,22 @@
         </div>
       </section>
 
-      <section id="contacts" class="flex flex-col">
-        <div class="max-w-4xl mx-auto text-center mb-12">
+      <section id="contacts" class="flex flex-col mt-90 mb-40 px-4">
+        <div class="max-w-4xl mx-auto text-center mb-20">
           <h1 class="text-4xl font-bold mb-4">Entre em Contato</h1>
           <p class="text-lg text-gray-300 max-w-2xl mx-auto">
             Preencha o formulário abaixo e entrarei em contato com você o quanto
             antes.
           </p>
-          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-            Ou então entre em contato pelo
-            <a
-              href="https://www.linkedin.com/in/raulvsdias/"
-              target="_blank"
-              class="underline text-blue-200"
-            >
-              Linkedin!
-            </a>
-          </p>
         </div>
 
-        <div class="w-full grid grid-cols-2 gap-1 place-items-center">
-          <div
-            class="bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition"
-          >
+        <div
+          class="w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center"
+        >
+          <div class="bg-gray-800 rounded-2xl p-8 shadow-lg w-full">
             <div [formGroup]="form" class="space-y-2">
               <p class="text-center text-2xl font-bold">Enviar e-mail</p>
+
               <mat-form-field class="w-full">
                 <mat-label class="w-full text-sm font-medium">Nome</mat-label>
                 <input
@@ -754,15 +751,15 @@
                 <textarea
                   [formControlName]="'message'"
                   rows="5"
-                  class="w-full p-2 rounded-md text-black"
+                  class="w-full p-2 rounded-md text-black placeholder-gray-800"
                   placeholder="Escreva sua mensagem aqui..."
-                >
-                </textarea>
+                ></textarea>
               </div>
 
               <div class="text-center">
                 <button
                   mat-raised-button
+                  (click)="sendEmail()"
                   class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold hover:opacity-90 transition"
                 >
                   Enviar Mensagem
@@ -771,7 +768,89 @@
             </div>
           </div>
 
-          <div>Inserir outra formas de contatos</div>
+          <div
+            class="h-full flex flex-col bg-transparent rounded-md px-8 w-full"
+          >
+            <h3 class="text-center font-bold text-2xl mb-6">
+              Outras formas de contato
+            </h3>
+
+            <div
+              class="flex flex-col justify-between items-center flex-1 gap-8"
+            >
+              <div class="flex flex-col items-center">
+                <p class="text-xl mb-2">Linkedin</p>
+                <svg
+                  class="cursor-pointer hover:text-blue-500"
+                  (click)="redirect('https://www.linkedin.com/in/raulvsdias/')"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 0h-14c-2.77 0-5 2.23-5 5v14c0 2.77 2.23 5 5 5h14c2.77 0 5-2.23 5-5v-14c0-2.77-2.23-5-5-5zm-11 20h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97v5.69h-3v-11h2.88v1.51h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2 3.61 4.59v6.44z"
+                  />
+                </svg>
+              </div>
+
+              <div class="flex flex-col items-center">
+                <p class="text-xl mb-2">Whatsapp</p>
+                <svg
+                  class="cursor-pointer hover:text-green-500"
+                  (click)="
+                    redirect(
+                      'https://wa.me/5562992367446?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20projeto%20ou%20manuten%C3%A7%C3%A3o%20de%20um%20projeto%20com%20voc%C3%AA%2C%20meu%20nome%20%C3%A9...'
+                    )
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.466 0-9.89 4.416-9.892 9.882-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.745-.989zm11.387-5.464c-.074-.124-.272-.198-.568-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.471-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51l-.571-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"
+                  />
+                </svg>
+              </div>
+
+              <div class="flex flex-col items-center">
+                <p class="text-xl mb-2">99Freelas</p>
+                <svg
+                  class="cursor-pointer hover:text-blue-300"
+                  (click)="
+                    redirect('https://www.99freelas.com.br/user/raulvsdias')
+                  "
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <text
+                    x="50%"
+                    y="55%"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="currentColor"
+                    font-family="Arial, sans-serif"
+                  >
+                    99
+                  </text>
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -779,7 +858,7 @@
 
   <footer class="bg-black text-white py-14 mt-16">
     <div
-      class="max-w-6xl mx-auto px-6 place-items-center grid md:grid-cols-3 gap-12"
+      class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
     >
       <div>
         <h2 class="text-2xl font-bold mb-4">Raul V. Dias</h2>
@@ -796,35 +875,35 @@
           <li>
             <a
               (click)="scrollToElement('about')"
-              class="nav cursor-pointer text-gray-300"
+              class="cursor-pointer text-gray-300 hover:text-blue-400 transition"
               >Sobre mim</a
             >
           </li>
           <li>
             <a
               (click)="scrollToElement('skills')"
-              class="nav cursor-pointer text-gray-300"
+              class="cursor-pointer text-gray-300 hover:text-blue-400 transition"
               >Skills</a
             >
           </li>
           <li>
             <a
               (click)="scrollToElement('timeline')"
-              class="nav cursor-pointer text-gray-300"
+              class="cursor-pointer text-gray-300 hover:text-blue-400 transition"
               >Timeline</a
             >
           </li>
           <li>
             <a
               (click)="scrollToElement('projects')"
-              class="nav cursor-pointer text-gray-300"
+              class="cursor-pointer text-gray-300 hover:text-blue-400 transition"
               >Projetos</a
             >
           </li>
           <li>
             <a
               (click)="scrollToElement('contacts')"
-              class="nav cursor-pointer text-gray-300"
+              class="cursor-pointer text-gray-300 hover:text-blue-400 transition"
               >Contato</a
             >
           </li>
@@ -838,6 +917,14 @@
           <li class="text-gray-300">Desenvolvimento Mobile</li>
           <li class="text-gray-300">Manutenção de App Angular</li>
         </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Site</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Construído em Angular, utilizando Tailwind, Angular Material, GSAP, e
+          outras bibliotecas de estilização.
+        </p>
       </div>
     </div>
 

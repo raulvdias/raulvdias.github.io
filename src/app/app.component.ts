@@ -21,6 +21,12 @@ import { bounceInOnEnterAnimation } from 'angular-animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { isPlatformBrowser } from '@angular/common';
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+emailjs.init('jbGYlqwLsSwYrioY5');
 
 @Component({
   selector: 'app-root',
@@ -29,6 +35,7 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -54,7 +61,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) public platformId: Object,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -68,19 +76,21 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.form = this._formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
     });
   }
 
   ngAfterViewInit(): void {
-    this.textAnimations();
-    this.nameMainAnimation();
-    this.aboutAnimation();
-    this.animateRockets();
-    this.skillsAnimations();
-    this.scrollBottomAnimations();
+    if (isPlatformBrowser(this.platformId)) {
+      this.textAnimations();
+      this.nameMainAnimation();
+      this.aboutAnimation();
+      this.animateRockets();
+      this.skillsAnimations();
+      this.scrollBottomAnimations();
+    }
   }
 
   textAnimations() {
@@ -149,7 +159,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       .to(this.rocket, { x: 50, rotate: 60, duration: 1 })
       .to(this.rocket, {
         duration: 10,
-        x: window.screen.width - 70,
+        x: window.screen.width - 300,
         y: 120,
         delay: 0,
         rotate: 180,
@@ -239,5 +249,29 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   redirect(url: string) {
     window.open(url, '_blank');
+  }
+
+  openDialog(data: any) {
+    this._dialog.open(DialogComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data,
+    });
+  }
+
+  sendEmail() {
+    if (this.form.valid) {
+      emailjs
+        .send('service_r1lrkg4', 'template_q7m8pj4', {
+          title: this.form.value.subject,
+          name: this.form.value.name,
+          message: this.form.value.message,
+          email: this.form.value.email,
+        })
+        .then((response: any) => {
+          const { status } = response as EmailJSResponseStatus;
+          this.openDialog(status);
+        });
+    }
   }
 }
