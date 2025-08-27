@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "predeploy": "ng build --output-path=dist/app --base-href https://raulvdias.github.io/raulvdias.github.io/ && echo > dist/app/.nojekyll",
+    "deploy": "npx angular-cli-ghpages --dir=dist/app"
   },
   "private": true,
   "dependencies": {
